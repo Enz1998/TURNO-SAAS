@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
   size?: 'sm' | 'md' | 'lg';
   isLoading?: boolean;
   icon?: React.ReactNode;
@@ -16,19 +16,20 @@ export const Button: React.FC<ButtonProps> = ({
   className = '',
   ...props 
 }) => {
-  const baseStyle = "inline-flex items-center justify-center font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none rounded-lg";
+  const baseStyle = "inline-flex items-center justify-center font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-1 disabled:opacity-60 disabled:pointer-events-none rounded-lg tracking-tight";
   
   const variants = {
-    primary: "bg-brand-600 text-white hover:bg-brand-700 focus:ring-brand-500 shadow-sm",
-    secondary: "bg-slate-800 text-white hover:bg-slate-900 focus:ring-slate-500 shadow-sm",
-    outline: "border border-slate-300 bg-transparent text-slate-700 hover:bg-slate-50 focus:ring-brand-500",
-    ghost: "bg-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+    primary: "bg-brand-600 text-white hover:bg-brand-700 focus:ring-brand-500 shadow-lg shadow-brand-600/20 hover:shadow-brand-600/40 hover:-translate-y-0.5 border border-transparent",
+    secondary: "bg-slate-900 text-white hover:bg-slate-800 focus:ring-slate-800 shadow-lg shadow-slate-900/20 hover:shadow-slate-900/30 hover:-translate-y-0.5 border border-transparent",
+    outline: "border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:text-brand-600 focus:ring-slate-200 hover:border-slate-300",
+    ghost: "bg-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900",
+    danger: "bg-white border border-red-100 text-red-600 hover:bg-red-50 focus:ring-red-500"
   };
 
   const sizes = {
-    sm: "h-8 px-3 text-xs",
-    md: "h-10 px-4 py-2 text-sm",
-    lg: "h-12 px-6 text-base"
+    sm: "h-9 px-3 text-xs",
+    md: "h-11 px-5 text-sm",
+    lg: "h-14 px-8 text-base"
   };
 
   return (
